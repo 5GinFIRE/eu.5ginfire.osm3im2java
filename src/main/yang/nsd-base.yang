@@ -273,9 +273,7 @@ module nsd-base
             description
                "Reference to the NS level monitoring parameter
                 that is aggregated";
-            type leafref {
-              path "../../../../monitoring-param/id";
-            }
+            type string;            
           }
         }
       }
@@ -286,9 +284,7 @@ module nsd-base
 
         leaf member-vnf-index-ref {
           description "member VNF index of this member VNF";
-          type leafref {
-            path "../../../constituent-vnfd/member-vnf-index";
-          }
+          type string;            
         }
 
         leaf count {
@@ -331,9 +327,7 @@ module nsd-base
 
         leaf ns-service-primitive-name-ref {
           description "Reference to the NS service primitive";
-          type leafref {
-            path "../../../service-primitive/name";
-          }
+          type string;            
         }
       }
     }
@@ -403,9 +397,7 @@ module nsd-base
 
           leaf member-vnf-index-ref {
             description "Reference to member-vnf within constituent-vnfds";
-            type leafref {
-              path "../../../../constituent-vnfd/member-vnf-index";
-            }
+            type string;            
           }
 
           leaf order {
@@ -482,9 +474,7 @@ module nsd-base
 
         leaf member-vnf-index-ref {
           description "Reference to member-vnf within constituent-vnfds";
-          type leafref {
-            path "../../../constituent-vnfd/member-vnf-index";
-          }
+          type string;            
         }
 
         leaf vnfd-id-ref {
@@ -752,9 +742,7 @@ module nsd-base
       case vim-network-profile {
         leaf ip-profile-ref {
           description "Named reference to IP-profile object";
-          type leafref {
-            path "../../ip-profiles/name";
-          }
+          type string;            
         }
       }
 
