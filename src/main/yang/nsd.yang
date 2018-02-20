@@ -99,9 +99,7 @@ module nsd
 
         leaf member-vnf-index-ref {
           description "Reference to member-vnf within constituent-vnfds";
-          type leafref {
-            path "../../../constituent-vnfd/member-vnf-index";
-          }
+          type string;
         }
 
         leaf vnfd-connection-point-ref {
@@ -167,9 +165,7 @@ module nsd
 
         leaf member-vnf-index-ref {
           description "Member VNF index of this member VNF";
-          type leafref {
-            path "../../../constituent-vnfd/member-vnf-index";
-          }
+          type string;
         }
 
         leaf vnfd-id-ref {
@@ -219,9 +215,7 @@ module nsd
         leaf member-vnf-index-ref {
           description
             "Mandatory reference to member-vnf within constituent-vnfds";
-          type leafref {
-            path "../../../constituent-vnfd/member-vnf-index";
-          }
+          type string;
         }
       }
     }
@@ -258,9 +252,7 @@ module nsd
         leaf member-vnf-index-ref {
           description
               "Reference to member-vnf within constituent-vnfds";
-          type leafref {
-             path "../../../constituent-vnfd/member-vnf-index";
-          }
+          type string;
         }
 
         leaf vnfd-id-ref {

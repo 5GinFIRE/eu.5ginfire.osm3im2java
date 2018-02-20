@@ -208,9 +208,7 @@ module vnfd-base
             description
                 "Use the default management interface on this VDU.";
             leaf vdu-id {
-              type leafref {
-                path "../../vdu/id";
-              }
+              type string;
             }
           }
 
@@ -218,9 +216,7 @@ module vnfd-base
             description
                 "Use the ip address associated with this connection point. This cp is then considered as management.";
             leaf cp {
-              type leafref {
-                path "../../connection-point/name";
-              }
+              type string;
             }
           }
         }
@@ -299,9 +295,7 @@ module vnfd-base
           description "List of internal connection points in this VLD";
           leaf id-ref {
             description "reference to the internal connection point id";
-            type leafref {
-              path "../../../vdu/internal-connection-point/id";
-            }
+            type string;
           }
           leaf ip-address {
             description "IP address of the internal connection point";
@@ -503,18 +497,14 @@ module vnfd-base
               leaf internal-connection-point-ref {
                 description
                     "Leaf Ref to the particular internal connection point";
-                type leafref {
-                   path "../../internal-connection-point/id";
-                 }
+                type string;
               }
             }
             case external {
               leaf external-connection-point-ref {
                 description
                     "Leaf Ref to the particular external connection point";
-                type leafref {
-                   path "../../../connection-point/name";
-                 }
+                type string;
               }
             }
           }
@@ -541,18 +531,14 @@ module vnfd-base
 
         key vdu-source-ref;
         leaf vdu-source-ref {
-          type leafref {
-            path "../../vdu/id";
-          }
+          type string;
         }
 
         leaf vdu-depends-on-ref {
           description
             "Reference to the VDU on which
             the source VDU depends.";
-          type leafref {
-            path "../../vdu/id";
-          }
+          type string;
         }
       }
 
@@ -592,9 +578,7 @@ module vnfd-base
           key "member-vdu-ref";
 
           leaf member-vdu-ref {
-            type leafref {
-              path "../../../vdu/id";
-            }
+            type string;
           }
         }
       }

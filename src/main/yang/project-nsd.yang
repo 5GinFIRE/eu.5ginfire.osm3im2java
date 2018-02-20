@@ -132,9 +132,7 @@ module project-nsd
 
         leaf member-vnf-index-ref {
           description "Reference to member-vnf within constituent-vnfds";
-          type leafref {
-            path "../../../constituent-vnfd/member-vnf-index";
-          }
+          type string;
         }
 
         leaf vnfd-id-ref {
@@ -182,9 +180,7 @@ module project-nsd
         leaf member-vnf-index-ref {
           description "Reference to member-vnf within constituent-vnfds";
 
-          type leafref {
-            path "../../../constituent-vnfd/member-vnf-index";
-          }
+          type string;
         }
 
         leaf vnfd-id-ref {
@@ -220,16 +216,12 @@ module project-nsd
           "List of VNF dependencies.";
       key vnf-source-ref;
       leaf vnf-source-ref {
-        type leafref {
-          path "../../../../project-vnfd:vnfd-catalog/project-vnfd:vnfd/project-vnfd:id";
-        }
+        type string;
       }
       leaf vnf-depends-on-ref {
         description
             "Reference to VNF that sorce VNF depends.";
-        type leafref {
-          path "../../../../project-vnfd:vnfd-catalog/project-vnfd:vnfd/project-vnfd:id";
-        }
+        type string;
       }
     }
   }
@@ -240,16 +232,12 @@ module project-nsd
           "List of VNF dependencies.";
       key vnf-source-ref;
       leaf vnf-source-ref {
-        type leafref {
-          path "../../../../../project-vnfd:vnfd-catalog/project-vnfd:vnfd/project-vnfd:id";
-        }
+        type string;
       }
       leaf vnf-depends-on-ref {
         description
             "Reference to VNF that sorce VNF depends.";
-        type leafref {
-          path "../../../../../project-vnfd:vnfd-catalog/project-vnfd:vnfd/project-vnfd:id";
-        }
+        type string;
       }
     }
   }
@@ -269,17 +257,13 @@ module project-nsd
 
         leaf member-vnf-index-ref {
           description "member VNF index of this member VNF";
-          type leafref {
-            path "../../../constituent-vnfd/member-vnf-index";
-          }
+          type string;
         }
 
         leaf vnfd-id-ref {
           description
               "Identifier for the VNFD.";
-          type leafref {
-            path "../../../../../project-vnfd:vnfd-catalog/project-vnfd:vnfd/project-vnfd:id";
-          }
+          type string;
         }
       }
     }
@@ -300,17 +284,13 @@ module project-nsd
 
         leaf member-vnf-index-ref {
           description "member VNF index of this member VNF";
-          type leafref {
-            path "../../../constituent-vnfd/member-vnf-index";
-          }
+          type string;
         }
 
         leaf vnfd-id-ref {
           description
               "Identifier for the VNFD.";
-          type leafref {
-            path "../../../../../../project-vnfd:vnfd-catalog/project-vnfd:vnfd/project-vnfd:id";
-          }
+          type string;
         }
       }
     }
@@ -359,9 +339,7 @@ module project-nsd
         leaf member-vnf-index-ref {
           description
             "Optional reference to member-vnf within constituent-vnfds";
-          type leafref {
-            path "../../../constituent-vnfd/member-vnf-index";
-          }
+          type string;
         }
       }
     }
@@ -405,9 +383,7 @@ module project-nsd
         leaf member-vnf-index-ref {
           description
             "Optional reference to member-vnf within constituent-vnfds";
-          type leafref {
-            path "../../../constituent-vnfd/member-vnf-index";
-          }
+          type string;
         }
       }
     }
@@ -444,9 +420,7 @@ module project-nsd
         leaf member-vnf-index-ref {
           description
               "Reference to member-vnf within constituent-vnfds";
-          type leafref {
-             path "../../../constituent-vnfd/member-vnf-index";
-          }
+          type string;
         }
 
         leaf vnfd-id-ref {
@@ -523,9 +497,7 @@ module project-nsd
         leaf member-vnf-index-ref {
           description
               "Reference to member-vnf within constituent-vnfds";
-          type leafref {
-             path "../../../constituent-vnfd/member-vnf-index";
-          }
+          type string;
         }
 
         leaf vnfd-id-ref {
