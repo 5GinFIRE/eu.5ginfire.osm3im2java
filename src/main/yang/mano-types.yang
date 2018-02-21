@@ -1168,8 +1168,8 @@ module mano-types
 
       list headers {
         description "Custom HTTP headers to put on HTTP request";
-        key key;
-        leaf key{
+        key akey;
+        leaf akey{
           description "HTTP header key";
           type string;
         }
@@ -1449,7 +1449,7 @@ module mano-types
       }
     }
   }
-
+//
   grouping input-parameter {
     description "List of input parameters that can be specified when instantiating a network service.";
 
@@ -1699,7 +1699,7 @@ module mano-types
       }
     }
   }
-
+//
   typedef alarm-severity-type {
     description "An indication of the importance or urgency of the alarm";
     type enumeration {
@@ -1857,7 +1857,7 @@ module mano-types
       type uint32;
     }
   }
-
+//
   typedef cloud-account-type {
     description "VIM account type";
     type enumeration {
@@ -1949,7 +1949,7 @@ module mano-types
         type string;
       }
 
-      leaf key {
+      leaf akey {
         description "Key associated with this key pair";
         type string;
       }
@@ -1979,7 +1979,7 @@ module mano-types
           type string;
         }
 
-        leaf key {
+        leaf akey {
           description "Key associated with this key pair";
           type string;
         }

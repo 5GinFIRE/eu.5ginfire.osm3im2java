@@ -624,7 +624,7 @@ module nsd-base
         type string;
       }
 
-      leaf key {
+      leaf akey {
         description "Key associated with this key pair";
         type string;
       }
@@ -654,7 +654,7 @@ module nsd-base
           type string;
         }
 
-        leaf key {
+        leaf akey {
           description "Key associated with this key pair";
           type string;
         }

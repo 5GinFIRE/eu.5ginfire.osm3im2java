@@ -18,12 +18,6 @@
 		<jackson.version>2.8.7</jackson.version>
 	</properties>
 
-
-
-
-
-
-
 	<pluginRepositories>
 		<pluginRepository>
 			<id>opendaylight-release</id>
@@ -37,7 +31,6 @@
 		</pluginRepository>
 	</pluginRepositories>
 
-
 	<repositories>
 		<repository>
 			<id>opendaylight-release</id>
@@ -50,8 +43,6 @@
 			<url>http://nexus.opendaylight.org/content/repositories/opendaylight.snapshot/</url>
 		</repository>
 	</repositories>
-
-
 
 	<dependencyManagement>
 		<dependencies>
@@ -101,6 +92,12 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.code.findbugs</groupId>
+			<artifactId>jsr305</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -118,48 +115,16 @@
 		<plugins>
 
 
-
-			<plugin>
-				<groupId>org.opendaylight.yangtools</groupId>
-				<artifactId>yang-maven-plugin</artifactId>
-				<version>${yangtools.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate-sources</goal>
-						</goals>
-						<configuration>
-			
-							<yangFilesRootDir>src/main/yang</yangFilesRootDir>
-							<codeGenerators>
-								<generator>
-									<codeGeneratorClass>
-										org.opendaylight.mdsal.binding.maven.api.gen.plugin.CodeGeneratorImpl
-									</codeGeneratorClass>
-									
-									<outputBaseDir> target/generated-sources/sal </outputBaseDir>
-								</generator>
-							</codeGenerators>
-					
-							<inspectDependencies>true</inspectDependencies>
-						</configuration>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>com.github.romix</groupId>
-						<artifactId>java-concurrent-hash-trie-map</artifactId>
-						<version>0.2.23</version>
-					</dependency>
-					<dependency>
-						<groupId>org.opendaylight.mdsal</groupId>
-						<artifactId>maven-sal-api-gen-plugin</artifactId>
-						<version>${mdsalmodel.version}</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-
-
+			<!-- <plugin> <groupId>org.opendaylight.yangtools</groupId> <artifactId>yang-maven-plugin</artifactId> 
+				<version>${yangtools.version}</version> <executions> <execution> <goals> 
+				<goal>generate-sources</goal> </goals> <configuration> <yangFilesRootDir>src/main/yang</yangFilesRootDir> 
+				<codeGenerators> <generator> <codeGeneratorClass> org.opendaylight.mdsal.binding.maven.api.gen.plugin.CodeGeneratorImpl 
+				</codeGeneratorClass> <outputBaseDir> target/generated-sources/sal </outputBaseDir> 
+				</generator> </codeGenerators> <inspectDependencies>true</inspectDependencies> 
+				</configuration> </execution> </executions> <dependencies> <dependency> <groupId>com.github.romix</groupId> 
+				<artifactId>java-concurrent-hash-trie-map</artifactId> <version>0.2.23</version> 
+				</dependency> <dependency> <groupId>org.opendaylight.mdsal</groupId> <artifactId>maven-sal-api-gen-plugin</artifactId> 
+				<version>${mdsalmodel.version}</version> </dependency> </dependencies> </plugin> -->
 
 
 			<plugin>
@@ -189,8 +154,8 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
+						<source>1.8</source>
+						<target>1.8</target>
 					</configuration>
 				</plugin>
 				<plugin>

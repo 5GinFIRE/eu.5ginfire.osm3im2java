@@ -167,7 +167,7 @@ module nsr
         type string;
       }
 
-      leaf key {
+      leaf akey {
         description "Key associated with this key pair";
         type string;
       }
