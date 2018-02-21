@@ -328,9 +328,7 @@ module vnfr
           }
 
           leaf-list internal-connection-point-ref {
-            type leafref {
-              path "../../vdur/internal-connection-point/id";
-            }
+            type string;
           }
         }
 
@@ -526,18 +524,14 @@ module vnfr
               leaf internal-connection-point-ref {
                 description
                     "Leaf Ref to the particular internal connection point";
-                type leafref {
-                  path "../../internal-connection-point/id";
-                }
+                type string;
               }
             }
             case external {
               leaf external-connection-point-ref {
                 description
                     "Leaf Ref to the particular external connection point";
-                type leafref {
-                  path "../../../connection-point/name";
-                }
+                type string;
               }
             }
           }
