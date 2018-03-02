@@ -2,6 +2,12 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.primitive.parameter.va
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.InitialConfigPrimitiveBuilder;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.initial.config.primitive.primitive.type.PrimitiveDefinitionBuilder;
+
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
 import java.util.Objects;
@@ -114,7 +120,7 @@ public class ParameterBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.ma
         return new ParameterImpl(this);
     }
 
-    private static final class ParameterImpl implements Parameter {
+    public static final class ParameterImpl implements Parameter {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.primitive.parameter.value.Parameter> getImplementedInterface() {
@@ -122,7 +128,9 @@ public class ParameterBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.ma
         }
 
         private final ParameterKey _key;
+        @JsonProperty("name")
         private final java.lang.String _name;
+        @JsonProperty("value")
         private final java.lang.String _value;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.primitive.parameter.value.Parameter>>, Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.primitive.parameter.value.Parameter>> augmentation = Collections.emptyMap();
@@ -149,6 +157,10 @@ public class ParameterBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.ma
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public ParameterImpl(){
+          	this( new ParameterBuilder() );
         }
 
         @Override

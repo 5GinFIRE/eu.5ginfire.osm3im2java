@@ -2,6 +2,10 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VduBuilder.VduImpl;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.GuestEpaBuilder.GuestEpaImpl;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.NumaPolicy;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.PcieDevice;
 
@@ -104,6 +108,7 @@ import org.opendaylight.yangtools.yang.binding.Augmentable;
  * @see GuestEpaBuilder
  *
  */
+@JsonDeserialize(as = GuestEpaImpl.class)
 public interface GuestEpa
     extends
     ChildOf<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.GuestEpa>,

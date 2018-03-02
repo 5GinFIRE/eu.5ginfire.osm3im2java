@@ -2,7 +2,11 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.nu
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.GuestEpa;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.GuestEpaBuilder.GuestEpaImpl;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.NumaNodePolicyBuilder.NumaNodePolicyImpl;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.numa.node.policy.Node;
 
 import java.util.List;
@@ -78,6 +82,7 @@ import org.opendaylight.yangtools.yang.binding.Augmentable;
  * @see NumaNodePolicyBuilder
  *
  */
+@JsonDeserialize(as = NumaNodePolicyImpl.class)
 public interface NumaNodePolicy
     extends
     ChildOf<GuestEpa>,

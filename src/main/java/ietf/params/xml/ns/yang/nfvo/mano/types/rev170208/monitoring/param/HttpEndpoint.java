@@ -2,10 +2,14 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import ietf.params.xml.ns.yang.ietf.inet.types.rev130715.PortNumber;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.HttpMethod;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.MonitoringParam;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.HttpEndpointBuilder.HttpEndpointImpl;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.http.endpoint.Headers;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder.VnfdImpl;
 
 import java.util.List;
 
@@ -59,6 +63,7 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see HttpEndpointKey
  *
  */
+@JsonDeserialize(as = HttpEndpointImpl.class)
 public interface HttpEndpoint
     extends
     ChildOf<MonitoringParam>,

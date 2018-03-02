@@ -3,6 +3,9 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.MgmtInterfaceBuilder;
 import ietf.params.xml.ns.yang.ietf.inet.types.rev130715.PortNumber;
 
 import java.util.HashMap;
@@ -110,15 +113,17 @@ public class DashboardParamsBuilder implements Builder<http.riftio.vnfd.base.rev
         return new DashboardParamsImpl(this);
     }
 
-    private static final class DashboardParamsImpl implements DashboardParams {
+    public static final class DashboardParamsImpl implements DashboardParams {
 
         @Override
         public java.lang.Class<http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.DashboardParams> getImplementedInterface() {
             return http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.DashboardParams.class;
         }
 
+        @JsonProperty("path")
         private final java.lang.String _path;
-        private final PortNumber _port;
+        private PortNumber _port;
+        @JsonProperty("https")
         private final java.lang.Boolean _https;
 
         private Map<java.lang.Class<? extends Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.DashboardParams>>, Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.DashboardParams>> augmentation = Collections.emptyMap();
@@ -138,6 +143,15 @@ public class DashboardParamsBuilder implements Builder<http.riftio.vnfd.base.rev
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        @JsonProperty("port")
+        public void setPort(String s){
+           _port = new PortNumber(Integer.parseInt(s));
+        }
+        
+        public DashboardParamsImpl(){
+        	this( new DashboardParamsBuilder() );
         }
 
         @Override

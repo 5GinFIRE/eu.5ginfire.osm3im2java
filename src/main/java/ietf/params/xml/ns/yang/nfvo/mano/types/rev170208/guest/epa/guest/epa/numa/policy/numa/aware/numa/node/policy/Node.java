@@ -2,7 +2,11 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.nu
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.NumaAwareBuilder.NumaAwareImpl;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.NumaNodePolicy;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.numa.node.policy.NodeBuilder.NodeImpl;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.numa.node.policy.node.OmNumaType;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.numa.node.policy.node.Vcpu;
 
@@ -68,6 +72,7 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see NodeKey
  *
  */
+@JsonDeserialize(as = NodeImpl.class)
 public interface Node
     extends
     ChildOf<NumaNodePolicy>,

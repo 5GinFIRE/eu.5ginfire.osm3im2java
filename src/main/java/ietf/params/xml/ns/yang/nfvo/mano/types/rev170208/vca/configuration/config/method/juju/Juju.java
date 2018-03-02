@@ -2,8 +2,12 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.conf
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VnfConfigurationBuilder.VnfConfigurationImpl;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.VcaConfiguration;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.VcaRelationships;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.juju.JujuBuilder.JujuImpl;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 
@@ -39,6 +43,7 @@ import org.opendaylight.yangtools.yang.binding.Augmentable;
  * @see JujuBuilder
  *
  */
+@JsonDeserialize(as = JujuImpl.class)
 public interface Juju
     extends
     ChildOf<VcaConfiguration>,

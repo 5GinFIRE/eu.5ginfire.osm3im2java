@@ -2,8 +2,12 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.VcaConfiguration;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.InitialConfigPrimitiveBuilder.InitialConfigPrimitiveImpl;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.initial.config.primitive.PrimitiveType;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder.VnfdImpl;
 
 import java.math.BigInteger;
 
@@ -49,6 +53,7 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see InitialConfigPrimitiveKey
  *
  */
+@JsonDeserialize(as = InitialConfigPrimitiveImpl.class)
 public interface InitialConfigPrimitive
     extends
     ChildOf<VcaConfiguration>,

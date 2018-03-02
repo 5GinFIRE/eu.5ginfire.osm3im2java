@@ -2,6 +2,9 @@ package ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.catalog;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import http.riftio.nsd.base.rev170228.NsdDescriptorCommon;
 import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.NsdCatalog;
 import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.NsdConstituentVnfd;
@@ -10,6 +13,8 @@ import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.NsdPlacementGroups;
 import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.NsdServicePrimitive;
 import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.NsdVld;
 import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.NsdVnfDependency;
+import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.catalog.NsdBuilder.NsdImpl;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder.VnfdImpl;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 import org.opendaylight.yangtools.yang.binding.Identifiable;
@@ -631,6 +636,7 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see NsdKey
  *
  */
+@JsonDeserialize(as = NsdImpl.class)
 public interface Nsd
     extends
     ChildOf<NsdCatalog>,

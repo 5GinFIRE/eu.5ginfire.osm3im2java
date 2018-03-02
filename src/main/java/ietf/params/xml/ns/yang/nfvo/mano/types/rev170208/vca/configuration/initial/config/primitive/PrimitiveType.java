@@ -2,6 +2,13 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.init
 import org.opendaylight.yangtools.yang.binding.DataContainer;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.InitialConfigPrimitive;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.InitialConfigPrimitiveBuilder.InitialConfigPrimitiveImpl;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.initial.config.primitive.primitive.type.PrimitiveDefinitionBuilder.PrimitiveDefinitionImpl;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder.VnfdImpl;
+
 /**
  * 
  * <p>
@@ -30,6 +37,7 @@ import org.opendaylight.yangtools.yang.common.QName;
  * <i>mano-types/vca-configuration/initial-config-primitive/primitive-type</i>
  *
  */
+@JsonDeserialize(as = PrimitiveDefinitionImpl.class)
 public interface PrimitiveType
     extends
     DataContainer

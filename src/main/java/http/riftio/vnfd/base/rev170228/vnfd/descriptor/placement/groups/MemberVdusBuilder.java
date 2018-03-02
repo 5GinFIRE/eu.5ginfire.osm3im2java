@@ -2,6 +2,11 @@ package http.riftio.vnfd.base.rev170228.vnfd.descriptor.placement.groups;
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.PlacementGroupsBuilder;
+
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
 import java.util.Objects;
@@ -102,7 +107,7 @@ public class MemberVdusBuilder implements Builder<http.riftio.vnfd.base.rev17022
         return new MemberVdusImpl(this);
     }
 
-    private static final class MemberVdusImpl implements MemberVdus {
+    public static final class MemberVdusImpl implements MemberVdus {
 
         @Override
         public java.lang.Class<http.riftio.vnfd.base.rev170228.vnfd.descriptor.placement.groups.MemberVdus> getImplementedInterface() {
@@ -110,6 +115,7 @@ public class MemberVdusBuilder implements Builder<http.riftio.vnfd.base.rev17022
         }
 
         private final MemberVdusKey _key;
+        @JsonProperty("member-vdu-ref")
         private final java.lang.String _memberVduRef;
 
         private Map<java.lang.Class<? extends Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.placement.groups.MemberVdus>>, Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.placement.groups.MemberVdus>> augmentation = Collections.emptyMap();
@@ -135,6 +141,10 @@ public class MemberVdusBuilder implements Builder<http.riftio.vnfd.base.rev17022
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public MemberVdusImpl(){
+          	this( new MemberVdusBuilder() );
         }
 
         @Override

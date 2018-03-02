@@ -3,6 +3,9 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.GuestEpaBuilder;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.NumaNodePolicy.MemPolicy;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.numa.node.policy.Node;
 
@@ -123,15 +126,18 @@ public class NumaNodePolicyBuilder implements Builder<ietf.params.xml.ns.yang.nf
         return new NumaNodePolicyImpl(this);
     }
 
-    private static final class NumaNodePolicyImpl implements NumaNodePolicy {
+    public static final class NumaNodePolicyImpl implements NumaNodePolicy {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.NumaNodePolicy> getImplementedInterface() {
             return ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.NumaNodePolicy.class;
         }
 
+        @JsonProperty("mem-policy")
         private final MemPolicy _memPolicy;
+        @JsonProperty("node")
         private final List<Node> _node;
+        @JsonProperty("node-cnt")
         private final java.lang.Integer _nodeCnt;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.NumaNodePolicy>>, Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.NumaNodePolicy>> augmentation = Collections.emptyMap();
@@ -151,6 +157,10 @@ public class NumaNodePolicyBuilder implements Builder<ietf.params.xml.ns.yang.nf
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public NumaNodePolicyImpl(){
+        	this( new NumaNodePolicyBuilder() );
         }
 
         @Override

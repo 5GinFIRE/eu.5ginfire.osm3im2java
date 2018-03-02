@@ -10,6 +10,7 @@ import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VduDependency;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VnfConfiguration;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.IpProfileList;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.MonitoringParam;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.supplemental.boot.data.SupplementalBootData;
 
 import org.opendaylight.yangtools.yang.binding.DataObject;
 import java.util.List;
@@ -1107,6 +1108,7 @@ public interface VnfdDescriptor
      * @return <code>java.lang.String</code> <code>serviceFunctionType</code>, or <code>null</code> if not present
      */
     java.lang.String getServiceFunctionType();
+    
     
     /**
      * List of placement groups at VNF level

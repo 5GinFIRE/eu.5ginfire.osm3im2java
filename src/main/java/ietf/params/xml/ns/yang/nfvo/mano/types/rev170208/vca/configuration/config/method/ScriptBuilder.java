@@ -2,6 +2,12 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.conf
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VnfConfigurationBuilder;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.script.Script.ScriptType;
+
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
 import java.util.Objects;
@@ -83,14 +89,14 @@ public class ScriptBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.mano.
         return new ScriptImpl(this);
     }
 
-    private static final class ScriptImpl implements Script {
+    public static final class ScriptImpl implements Script {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.Script> getImplementedInterface() {
             return ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.Script.class;
         }
 
-        private final ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.script.Script _script;
+        private ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.script.Script _script;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.Script>>, Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.Script>> augmentation = Collections.emptyMap();
 
@@ -108,6 +114,18 @@ public class ScriptBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.mano.
                 this.augmentation = new HashMap<>(base.augmentation);
             }
         }
+        
+        public ScriptImpl() {
+          	this( new ScriptBuilder() );
+        }
+        
+        @JsonProperty("script-type")
+        public void setScript(String s){
+        	if( s.equals("riftio")){
+        		ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.script.ScriptBuilder sb = new ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.script.ScriptBuilder().setScriptType(ScriptType.Rift);
+        		_script = sb.build();
+        	}
+         }
 
         @Override
         public ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.script.Script getScript() {

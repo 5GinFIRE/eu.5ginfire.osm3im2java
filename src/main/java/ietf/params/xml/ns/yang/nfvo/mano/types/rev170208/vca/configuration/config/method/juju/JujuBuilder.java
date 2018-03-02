@@ -3,6 +3,9 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VnfConfigurationBuilder;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.relationships.VcaRelationships;
 
 import java.util.HashMap;
@@ -135,13 +138,14 @@ public class JujuBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.mano.ty
         return new JujuImpl(this);
     }
 
-    private static final class JujuImpl implements Juju {
+    public static final class JujuImpl implements Juju {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.juju.Juju> getImplementedInterface() {
             return ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.juju.Juju.class;
         }
 
+        @JsonProperty("charm")
         private final java.lang.String _charm;
         private final VcaRelationships _vcaRelationships;
         private final java.lang.Boolean _proxy;
@@ -163,6 +167,10 @@ public class JujuBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.mano.ty
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public JujuImpl(){
+          	this( new JujuBuilder() );
         }
 
         @Override

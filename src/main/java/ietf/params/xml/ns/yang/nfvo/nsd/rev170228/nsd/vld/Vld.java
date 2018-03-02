@@ -2,9 +2,13 @@ package ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import http.riftio.nsd.base.rev170228.NsdVldCommon;
 import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.NsdVld;
+import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.VldBuilder.VldImpl;
 import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.vld.VnfdConnectionPointRef;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder.VnfdImpl;
 
 import java.util.List;
 import org.opendaylight.yangtools.yang.binding.Augmentable;
@@ -92,6 +96,7 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see VldKey
  *
  */
+@JsonDeserialize(as = VldImpl.class)
 public interface Vld
     extends
     ChildOf<NsdVld>,

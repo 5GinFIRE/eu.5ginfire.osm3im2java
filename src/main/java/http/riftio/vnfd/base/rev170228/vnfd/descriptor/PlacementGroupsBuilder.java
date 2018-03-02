@@ -3,8 +3,11 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.placement.groups.MemberVdus;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.PlacementGroupInfo.Strategy;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder;
 
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
@@ -172,7 +175,7 @@ public class PlacementGroupsBuilder implements Builder<http.riftio.vnfd.base.rev
         return new PlacementGroupsImpl(this);
     }
 
-    private static final class PlacementGroupsImpl implements PlacementGroups {
+    public static final class PlacementGroupsImpl implements PlacementGroups {
 
         @Override
         public java.lang.Class<http.riftio.vnfd.base.rev170228.vnfd.descriptor.PlacementGroups> getImplementedInterface() {
@@ -180,13 +183,21 @@ public class PlacementGroupsBuilder implements Builder<http.riftio.vnfd.base.rev
         }
 
         private final PlacementGroupsKey _key;
+        @JsonProperty("member-vdus")
         private final List<MemberVdus> _memberVdus;
+        @JsonProperty("name")
         private final java.lang.String _name;
+        @JsonProperty("requirement")
         private final java.lang.String _requirement;
+        @JsonProperty("strategy")
         private final Strategy _strategy;
 
         private Map<java.lang.Class<? extends Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.PlacementGroups>>, Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.PlacementGroups>> augmentation = Collections.emptyMap();
 
+        public PlacementGroupsImpl(){
+          	this( new PlacementGroupsBuilder() );
+        }
+        
         private PlacementGroupsImpl(PlacementGroupsBuilder base) {
             if (base.getKey() == null) {
                 this._key = new PlacementGroupsKey(

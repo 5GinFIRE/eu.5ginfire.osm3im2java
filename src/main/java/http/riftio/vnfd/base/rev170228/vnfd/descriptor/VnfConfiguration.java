@@ -2,8 +2,13 @@ package http.riftio.vnfd.base.rev170228.vnfd.descriptor;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import http.riftio.vnfd.base.rev170228.VnfdDescriptor;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VnfConfigurationBuilder.VnfConfigurationImpl;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.VcaConfiguration;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder.VnfdImpl;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 
@@ -112,6 +117,7 @@ import org.opendaylight.yangtools.yang.binding.Augmentable;
  * @see VnfConfigurationBuilder
  *
  */
+@JsonDeserialize(as = VnfConfigurationImpl.class)
 public interface VnfConfiguration
     extends
     ChildOf<VnfdDescriptor>,

@@ -2,8 +2,13 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.conf
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VnfConfigurationBuilder.VnfConfigurationImpl;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.PrimitiveParameter;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.ConfigPrimitive;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.primitive.ParameterBuilder.ParameterImpl;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 import org.opendaylight.yangtools.yang.binding.Identifiable;
@@ -47,6 +52,8 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see ParameterKey
  *
  */
+@JsonDeserialize(as = ParameterImpl.class)
+@JsonIgnoreProperties({"rw-project-vnfd:out"})
 public interface Parameter
     extends
     ChildOf<ConfigPrimitive>,

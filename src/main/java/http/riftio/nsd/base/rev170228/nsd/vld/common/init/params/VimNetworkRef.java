@@ -2,7 +2,11 @@ package http.riftio.nsd.base.rev170228.nsd.vld.common.init.params;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import http.riftio.nsd.base.rev170228.nsd.vld.common.InitParams;
+import http.riftio.nsd.base.rev170228.nsd.vld.common.init.params.VimNetworkRefBuilder.VimNetworkRefImpl;
+import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.catalog.NsdBuilder.NsdImpl;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 
@@ -20,6 +24,7 @@ import org.opendaylight.yangtools.yang.binding.Augmentable;
  * <i>nsd-base/nsd-vld-common/init-params/vim-network-ref</i>
  *
  */
+@JsonDeserialize(as = VimNetworkRefImpl.class)
 public interface VimNetworkRef
     extends
     DataObject,

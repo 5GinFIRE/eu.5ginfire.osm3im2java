@@ -1,8 +1,12 @@
 package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.initial.config.primitive.primitive.type;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.primitive.parameter.value.ParameterBuilder;
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VnfConfigurationBuilder;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.primitive.parameter.value.Parameter;
 
 import java.util.HashMap;
@@ -136,16 +140,16 @@ public class PrimitiveDefinitionBuilder implements Builder<ietf.params.xml.ns.ya
         return new PrimitiveDefinitionImpl(this);
     }
 
-    private static final class PrimitiveDefinitionImpl implements PrimitiveDefinition {
+    public static final class PrimitiveDefinitionImpl implements PrimitiveDefinition {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.initial.config.primitive.primitive.type.PrimitiveDefinition> getImplementedInterface() {
             return ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.initial.config.primitive.primitive.type.PrimitiveDefinition.class;
         }
 
-        private final java.lang.String _name;
-        private final List<Parameter> _parameter;
-        private final java.lang.String _userDefinedScript;
+        private  java.lang.String _name;
+        private  List<Parameter> _parameter;
+        private  java.lang.String _userDefinedScript;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.initial.config.primitive.primitive.type.PrimitiveDefinition>>, Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.initial.config.primitive.primitive.type.PrimitiveDefinition>> augmentation = Collections.emptyMap();
 
@@ -165,7 +169,28 @@ public class PrimitiveDefinitionBuilder implements Builder<ietf.params.xml.ns.ya
                 this.augmentation = new HashMap<>(base.augmentation);
             }
         }
+        
+        public PrimitiveDefinitionImpl(){
+          	this( new PrimitiveDefinitionBuilder() );
+        }
+        
+        @JsonProperty("name")
+        public void setName(String s) {
+        	   _name = s;
+        }
+        
+        @JsonProperty("user-defined-script")
+        public void setUserDefinedScript(String s) {
+         	_userDefinedScript = s;
+        }
 
+        @JsonProperty("parameter")
+        public void setParameter(List<Parameter> s) {
+        	 for(Parameter prm : s) {
+           prm = new ParameterBuilder().setName(prm.getName()).setValue(prm.getValue()).build();
+        	 }
+        }
+        
         @Override
         public java.lang.String getName() {
             return _name;

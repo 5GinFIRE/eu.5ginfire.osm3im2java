@@ -3,7 +3,10 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.ConnectionPointType;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder;
 
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
@@ -198,18 +201,22 @@ public class InternalConnectionPointBuilder implements Builder<http.riftio.vnfd.
         return new InternalConnectionPointImpl(this);
     }
 
-    private static final class InternalConnectionPointImpl implements InternalConnectionPoint {
+    public static final class InternalConnectionPointImpl implements InternalConnectionPoint {
 
         @Override
         public java.lang.Class<http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.InternalConnectionPoint> getImplementedInterface() {
             return http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.InternalConnectionPoint.class;
         }
 
+        @JsonProperty("id")
         private final java.lang.String _id;
         private final java.lang.String _internalVldRef;
         private final InternalConnectionPointKey _key;
+        @JsonProperty("name")
         private final java.lang.String _name;
+        @JsonProperty("short-name")
         private final java.lang.String _shortName;
+        @JsonProperty("type")
         private final ConnectionPointType _type;
         private final java.lang.Boolean _portSecurityEnabled;
 
@@ -241,6 +248,10 @@ public class InternalConnectionPointBuilder implements Builder<http.riftio.vnfd.
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public InternalConnectionPointImpl(){
+          	this( new InternalConnectionPointBuilder() );
         }
 
         @Override

@@ -5,6 +5,9 @@ import org.opendaylight.yangtools.concepts.Builder;
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.NumaNodePolicyBuilder;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.numa.node.policy.node.OmNumaType;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.numa.node.policy.node.Vcpu;
 
@@ -182,13 +185,14 @@ public class NodeBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.mano.ty
         return new NodeImpl(this);
     }
 
-    private static final class NodeImpl implements Node {
+    public static final class NodeImpl implements Node {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.numa.node.policy.Node> getImplementedInterface() {
             return ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.numa.node.policy.Node.class;
         }
 
+        @JsonProperty("id")
         private final BigInteger _id;
         private final NodeKey _key;
         private final BigInteger _memoryMb;
@@ -221,6 +225,10 @@ public class NodeBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.mano.ty
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public NodeImpl(){
+        	this( new NodeBuilder() );
         }
 
         @Override

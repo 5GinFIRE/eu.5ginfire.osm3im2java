@@ -3,6 +3,9 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VnfConfigurationBuilder;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.primitive.Parameter;
 
 import java.util.HashMap;
@@ -130,7 +133,7 @@ public class ConfigPrimitiveBuilder implements Builder<ietf.params.xml.ns.yang.n
         return new ConfigPrimitiveImpl(this);
     }
 
-    private static final class ConfigPrimitiveImpl implements ConfigPrimitive {
+    public static final class ConfigPrimitiveImpl implements ConfigPrimitive {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.ConfigPrimitive> getImplementedInterface() {
@@ -138,7 +141,9 @@ public class ConfigPrimitiveBuilder implements Builder<ietf.params.xml.ns.yang.n
         }
 
         private final ConfigPrimitiveKey _key;
+        @JsonProperty("name")
         private final java.lang.String _name;
+        @JsonProperty("parameter")
         private final List<Parameter> _parameter;
         private final java.lang.String _userDefinedScript;
 
@@ -167,6 +172,10 @@ public class ConfigPrimitiveBuilder implements Builder<ietf.params.xml.ns.yang.n
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public ConfigPrimitiveImpl(){
+          	this( new ConfigPrimitiveBuilder() );
         }
 
         @Override

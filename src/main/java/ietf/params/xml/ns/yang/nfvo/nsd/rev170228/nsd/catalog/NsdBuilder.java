@@ -8,6 +8,8 @@ import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import http.riftio.nsd.base.rev170228.nsd.descriptor.common.ConnectionPoint;
 import http.riftio.nsd.base.rev170228.nsd.descriptor.common.InitialServicePrimitive;
 import http.riftio.nsd.base.rev170228.nsd.descriptor.common.KeyPair;
@@ -24,6 +26,7 @@ import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.placement.groups.Placement
 import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.service.primitive.ServicePrimitive;
 import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.Vld;
 import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vnf.dependency.VnfDependency;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder;
 
 import java.util.Objects;
 import java.util.Map;
@@ -516,7 +519,7 @@ public class NsdBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.nsd.rev1
         return new NsdImpl(this);
     }
 
-    private static final class NsdImpl implements Nsd {
+    public static final class NsdImpl implements Nsd {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.catalog.Nsd> getImplementedInterface() {
@@ -524,26 +527,35 @@ public class NsdBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.nsd.rev1
         }
 
         private final List<ConnectionPoint> _connectionPoint;
+        @JsonProperty("constituent-vnfd")
         private final List<ConstituentVnfd> _constituentVnfd;
+        @JsonProperty("description")
         private final java.lang.String _description;
+        @JsonProperty("id")
         private final java.lang.String _id;
         private final List<InitialServicePrimitive> _initialServicePrimitive;
         private final List<InputParameterXpath> _inputParameterXpath;
         private final List<IpProfiles> _ipProfiles;
         private final NsdKey _key;
         private final List<KeyPair> _keyPair;
+        @JsonProperty("logo")
         private final java.lang.String _logo;
         private final List<MonitoringParam> _monitoringParam;
+        @JsonProperty("name")
         private final java.lang.String _name;
         private final List<ParameterPool> _parameterPool;
         private final List<PlacementGroups> _placementGroups;
         private final List<ScalingGroupDescriptor> _scalingGroupDescriptor;
         private final List<ServicePrimitive> _servicePrimitive;
+        @JsonProperty("short-name")
         private final java.lang.String _shortName;
         private final List<TerminateServicePrimitive> _terminateServicePrimitive;
         private final List<User> _user;
+        @JsonProperty("vendor")
         private final java.lang.String _vendor;
+        @JsonProperty("version")
         private final java.lang.String _version;
+        @JsonProperty("vld")
         private final List<Vld> _vld;
         private final List<VnfDependency> _vnfDependency;
         private final List<Vnffgd> _vnffgd;
@@ -593,6 +605,10 @@ public class NsdBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.nsd.rev1
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public NsdImpl(){
+          	this( new NsdBuilder() );
         }
 
         @Override

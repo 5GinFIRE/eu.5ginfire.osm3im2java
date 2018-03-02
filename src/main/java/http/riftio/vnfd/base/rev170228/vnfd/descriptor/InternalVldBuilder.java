@@ -5,10 +5,13 @@ import org.opendaylight.yangtools.concepts.Builder;
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.internal.vld.InitParams;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.internal.vld.InternalConnectionPoint;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.VirtualLinkType;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.provider.network.ProviderNetwork;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder;
 
 import java.util.Objects;
 import java.math.BigInteger;
@@ -281,7 +284,7 @@ public class InternalVldBuilder implements Builder<http.riftio.vnfd.base.rev1702
         return new InternalVldImpl(this);
     }
 
-    private static final class InternalVldImpl implements InternalVld {
+    public static final class InternalVldImpl implements InternalVld {
 
         @Override
         public java.lang.Class<http.riftio.vnfd.base.rev170228.vnfd.descriptor.InternalVld> getImplementedInterface() {
@@ -289,15 +292,20 @@ public class InternalVldBuilder implements Builder<http.riftio.vnfd.base.rev1702
         }
 
         private final java.lang.String _description;
+        @JsonProperty("id")
         private final java.lang.String _id;
         private final InitParams _initParams;
+        @JsonProperty("internal-connection-point")
         private final List<InternalConnectionPoint> _internalConnectionPoint;
         private final InternalVldKey _key;
         private final BigInteger _leafBandwidth;
+        @JsonProperty("name")
         private final java.lang.String _name;
         private final ProviderNetwork _providerNetwork;
         private final BigInteger _rootBandwidth;
+        @JsonProperty("short-name")
         private final java.lang.String _shortName;
+        @JsonProperty("type")
         private final VirtualLinkType _type;
 
         private Map<java.lang.Class<? extends Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.InternalVld>>, Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.InternalVld>> augmentation = Collections.emptyMap();
@@ -332,6 +340,10 @@ public class InternalVldBuilder implements Builder<http.riftio.vnfd.base.rev1702
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public InternalVldImpl(){
+          	this( new InternalVldBuilder() );
         }
 
         @Override

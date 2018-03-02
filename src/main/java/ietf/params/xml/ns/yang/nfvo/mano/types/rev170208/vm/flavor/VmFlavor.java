@@ -1,6 +1,12 @@
 package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vm.flavor;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VduBuilder.VduImpl;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vm.flavor.VmFlavorBuilder.VmFlavorImpl;
+
 import java.math.BigInteger;
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 
@@ -27,6 +33,7 @@ import org.opendaylight.yangtools.yang.binding.Augmentable;
  * @see VmFlavorBuilder
  *
  */
+@JsonDeserialize(as = VmFlavorImpl.class)
 public interface VmFlavor
     extends
     ChildOf<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.VmFlavor>,

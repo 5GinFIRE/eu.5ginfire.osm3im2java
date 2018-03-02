@@ -2,7 +2,11 @@ package http.riftio.vnfd.base.rev170228.vnfd.descriptor;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import http.riftio.vnfd.base.rev170228.VnfdDescriptor;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.ConnectionPointBuilder.ConnectionPointImpl;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.MgmtInterfaceBuilder.MgmtInterfaceImpl;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.DashboardParams;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.EndpointType;
 import ietf.params.xml.ns.yang.ietf.inet.types.rev130715.PortNumber;
@@ -55,6 +59,7 @@ import org.opendaylight.yangtools.yang.binding.Augmentable;
  * @see MgmtInterfaceBuilder
  *
  */
+@JsonDeserialize(as = MgmtInterfaceImpl.class)
 public interface MgmtInterface
     extends
     ChildOf<VnfdDescriptor>,

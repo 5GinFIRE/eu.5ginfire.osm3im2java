@@ -2,7 +2,11 @@ package http.riftio.vnfd.base.rev170228.vnfd.descriptor.placement.groups;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.PlacementGroups;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.PlacementGroupsBuilder.PlacementGroupsImpl;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.placement.groups.MemberVdusBuilder.MemberVdusImpl;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 import org.opendaylight.yangtools.yang.binding.Identifiable;
@@ -27,6 +31,7 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see MemberVdusKey
  *
  */
+@JsonDeserialize(as = MemberVdusImpl.class)
 public interface MemberVdus
     extends
     ChildOf<PlacementGroups>,

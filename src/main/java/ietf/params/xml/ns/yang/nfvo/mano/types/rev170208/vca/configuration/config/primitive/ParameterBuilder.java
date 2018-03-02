@@ -3,7 +3,10 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.ParameterDataType;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.ConfigPrimitiveBuilder;
 
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
@@ -215,20 +218,26 @@ public class ParameterBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.ma
         return new ParameterImpl(this);
     }
 
-    private static final class ParameterImpl implements Parameter {
+    public static final class ParameterImpl implements Parameter {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.primitive.Parameter> getImplementedInterface() {
             return ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.primitive.Parameter.class;
         }
 
+        @JsonProperty("data-type")
         private final ParameterDataType _dataType;
+        @JsonProperty("default-value")
         private final java.lang.String _defaultValue;
         private final ParameterKey _key;
+        @JsonProperty("name")
         private final java.lang.String _name;
         private final java.lang.String _parameterPool;
+        @JsonProperty("hidden")
         private final java.lang.Boolean _hidden;
+        @JsonProperty("mandatory")
         private final java.lang.Boolean _mandatory;
+        @JsonProperty("read-only")
         private final java.lang.Boolean _readOnly;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.primitive.Parameter>>, Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.primitive.Parameter>> augmentation = Collections.emptyMap();
@@ -261,6 +270,11 @@ public class ParameterBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.ma
                 this.augmentation = new HashMap<>(base.augmentation);
             }
         }
+        
+        public ParameterImpl(){
+          	this( new ParameterBuilder() );
+        }
+
 
         @Override
         public ParameterDataType getDataType() {

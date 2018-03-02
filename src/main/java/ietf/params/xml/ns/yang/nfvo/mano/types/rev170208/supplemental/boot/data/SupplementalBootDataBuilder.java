@@ -3,6 +3,8 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.config.file.ConfigFile;
 
 import java.util.HashMap;
@@ -124,7 +126,7 @@ public class SupplementalBootDataBuilder implements Builder<ietf.params.xml.ns.y
         return new SupplementalBootDataImpl(this);
     }
 
-    private static final class SupplementalBootDataImpl implements SupplementalBootData {
+    public static final class SupplementalBootDataImpl implements SupplementalBootData {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.supplemental.boot.data.SupplementalBootData> getImplementedInterface() {
@@ -132,6 +134,7 @@ public class SupplementalBootDataBuilder implements Builder<ietf.params.xml.ns.y
         }
 
         private final List<ConfigFile> _configFile;
+        @JsonProperty("boot-data-drive")
         private final java.lang.Boolean _bootDataDrive;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.supplemental.boot.data.SupplementalBootData>>, Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.supplemental.boot.data.SupplementalBootData>> augmentation = Collections.emptyMap();
@@ -150,6 +153,10 @@ public class SupplementalBootDataBuilder implements Builder<ietf.params.xml.ns.y
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public SupplementalBootDataImpl(){
+        	this( new SupplementalBootDataBuilder() );
         }
 
         @Override

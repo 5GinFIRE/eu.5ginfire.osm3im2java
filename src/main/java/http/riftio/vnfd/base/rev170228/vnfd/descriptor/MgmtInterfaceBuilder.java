@@ -1,10 +1,14 @@
 package http.riftio.vnfd.base.rev170228.vnfd.descriptor;
 import org.opendaylight.yangtools.yang.binding.Augmentation;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.endpoint.type.*;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.DashboardParams;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.EndpointType;
+import ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress;
 import ietf.params.xml.ns.yang.ietf.inet.types.rev130715.PortNumber;
 
 import java.util.HashMap;
@@ -113,16 +117,18 @@ public class MgmtInterfaceBuilder implements Builder<http.riftio.vnfd.base.rev17
         return new MgmtInterfaceImpl(this);
     }
 
-    private static final class MgmtInterfaceImpl implements MgmtInterface {
+    public static final class MgmtInterfaceImpl implements MgmtInterface {
 
         @Override
         public java.lang.Class<http.riftio.vnfd.base.rev170228.vnfd.descriptor.MgmtInterface> getImplementedInterface() {
             return http.riftio.vnfd.base.rev170228.vnfd.descriptor.MgmtInterface.class;
         }
 
+        @JsonProperty("dashboard-params")        
         private final DashboardParams _dashboardParams;
-        private final EndpointType _endpointType;
-        private final PortNumber _port;
+        @JsonProperty("endpoint-type")        
+        private EndpointType _endpointType;    
+        private PortNumber _port;
 
         private Map<java.lang.Class<? extends Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.MgmtInterface>>, Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.MgmtInterface>> augmentation = Collections.emptyMap();
 
@@ -141,6 +147,30 @@ public class MgmtInterfaceBuilder implements Builder<http.riftio.vnfd.base.rev17
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public MgmtInterfaceImpl(){
+        	this( new MgmtInterfaceBuilder() );
+        }
+        
+        @JsonProperty("port")
+        public void setPort(String s){
+           _port = new PortNumber(Integer.parseInt(s));
+        }
+        
+        @JsonProperty("vdu-id")
+        public void setVduidAsEndpointType(String s){
+        	_endpointType = (new VduIdBuilder().setVduId(s)).build() ;
+        }
+        
+        @JsonProperty("cp")
+        public void setCPAsEndpointType(String s){
+        	_endpointType = (new CpBuilder().setCp(s)).build() ;
+        }
+        
+        @JsonProperty("ip")
+        public void setIPAsEndpointType(String s){
+        	_endpointType = (new IpBuilder().setIpAddress(new IpAddress(s))).build() ;
         }
 
         @Override

@@ -2,6 +2,9 @@ package http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.endpoint
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
+
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder;
+
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
 import java.util.Objects;
@@ -83,7 +86,7 @@ public class CpBuilder implements Builder<http.riftio.vnfd.base.rev170228.vnfd.d
         return new CpImpl(this);
     }
 
-    private static final class CpImpl implements Cp {
+    public static final class CpImpl implements Cp {
 
         @Override
         public java.lang.Class<http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.endpoint.type.Cp> getImplementedInterface() {

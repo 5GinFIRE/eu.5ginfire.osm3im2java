@@ -45,6 +45,12 @@ public class IpAddress
         this._ipv6Address = source._ipv6Address;
         this._value = source._value;
     }
+    
+    public IpAddress(String ip) {
+
+    	this._ipv4Address = new Ipv4Address(ip);
+    	this._ipv6Address = new Ipv6Address(ip);
+    }
 
 
     public Ipv4Address getIpv4Address() {

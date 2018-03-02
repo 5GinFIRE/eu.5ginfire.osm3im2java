@@ -6,6 +6,9 @@ import org.opendaylight.yangtools.concepts.Builder;
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.endpoint.type.VduIdBuilder;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.Alarm;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.AlternativeImages;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.CloudInitInput;
@@ -13,6 +16,7 @@ import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.Interface;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.InternalConnectionPoint;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.VduConfiguration;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.Volumes;
+import ietf.params.xml.ns.yang.ietf.inet.types.rev130715.PortNumber;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.GuestEpa;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.host.epa.HostEpa;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.hypervisor.epa.HypervisorEpa;
@@ -442,7 +446,7 @@ public class VduBuilder implements Builder<http.riftio.vnfd.base.rev170228.vnfd.
         return new VduImpl(this);
     }
 
-    private static final class VduImpl implements Vdu {
+    public static final class VduImpl implements Vdu {
 
         @Override
         public java.lang.Class<http.riftio.vnfd.base.rev170228.vnfd.descriptor.Vdu> getImplementedInterface() {
@@ -451,29 +455,41 @@ public class VduBuilder implements Builder<http.riftio.vnfd.base.rev170228.vnfd.
 
         private final List<Alarm> _alarm;
         private final List<AlternativeImages> _alternativeImages;
+        @JsonProperty("cloud-init-input")
         private final CloudInitInput _cloudInitInput;
+        @JsonProperty("count")
         private final BigInteger _count;
+        @JsonProperty("description")
         private final java.lang.String _description;
+        @JsonProperty("guest-epa")
         private final GuestEpa _guestEpa;
         private final HostEpa _hostEpa;
         private final HypervisorEpa _hypervisorEpa;
+        @JsonProperty("id")
         private final java.lang.String _id;
+        @JsonProperty("image")
         private final java.lang.String _image;
+        @JsonProperty("image-checksum")
         private final java.lang.String _imageChecksum;
+        @JsonProperty("interface")
         private final List<Interface> _interface;
+        @JsonProperty("internal-connection-point")
         private final List<InternalConnectionPoint> _internalConnectionPoint;
         private final VduKey _key;
         private final java.lang.String _mgmtVpci;
+        @JsonProperty("name")
         private final java.lang.String _name;
+        @JsonProperty("supplemental-boot-data")
         private final SupplementalBootData _supplementalBootData;
         private final VduConfiguration _vduConfiguration;
+        @JsonProperty("vm-flavor")
         private final VmFlavor _vmFlavor;
         private final List<Volumes> _volumes;
         private final VswitchEpa _vswitchEpa;
 
         private Map<java.lang.Class<? extends Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.Vdu>>, Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.Vdu>> augmentation = Collections.emptyMap();
 
-        private VduImpl(VduBuilder base) {
+        public VduImpl(VduBuilder base) {
             if (base.getKey() == null) {
                 this._key = new VduKey(
                     base.getId()
@@ -513,6 +529,10 @@ public class VduBuilder implements Builder<http.riftio.vnfd.base.rev170228.vnfd.
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public VduImpl(){
+        	this( new VduBuilder() );
         }
 
         @Override

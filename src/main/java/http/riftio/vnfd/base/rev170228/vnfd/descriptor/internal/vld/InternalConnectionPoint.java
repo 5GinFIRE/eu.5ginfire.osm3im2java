@@ -2,7 +2,11 @@ package http.riftio.vnfd.base.rev170228.vnfd.descriptor.internal.vld;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.InternalVld;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.InternalVldBuilder.InternalVldImpl;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.internal.vld.InternalConnectionPointBuilder.InternalConnectionPointImpl;
 import ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
@@ -31,6 +35,7 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see InternalConnectionPointKey
  *
  */
+@JsonDeserialize(as = InternalConnectionPointImpl.class)
 public interface InternalConnectionPoint
     extends
     ChildOf<InternalVld>,

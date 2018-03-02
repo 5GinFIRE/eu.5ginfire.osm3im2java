@@ -3,9 +3,17 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import http.riftio.vnfd.base.rev170228.InterfaceType;
 import http.riftio.vnfd.base.rev170228.virtual._interface.VirtualInterface;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.endpoint.type.CpBuilder;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.endpoint.type.IpBuilder;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.endpoint.type.VduIdBuilder;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu._interface.ConnectionPointType;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu._interface.connection.point.type.ExternalBuilder;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu._interface.connection.point.type.InternalBuilder;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder;
 
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
@@ -27,6 +35,7 @@ public class InterfaceBuilder implements Builder<http.riftio.vnfd.base.rev170228
     private java.lang.String _name;
     private java.lang.Long _position;
     private InterfaceType _type;
+    @JsonProperty("virtual-interface")
     private VirtualInterface _virtualInterface;
 
     Map<java.lang.Class<? extends Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.Interface>>, Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.Interface>> augmentation = Collections.emptyMap();
@@ -202,19 +211,24 @@ public class InterfaceBuilder implements Builder<http.riftio.vnfd.base.rev170228
         return new InterfaceImpl(this);
     }
 
-    private static final class InterfaceImpl implements Interface {
+    public static final class InterfaceImpl implements Interface {
 
         @Override
         public java.lang.Class<http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.Interface> getImplementedInterface() {
             return http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.Interface.class;
         }
 
-        private final ConnectionPointType _connectionPointType;
+        @JsonProperty("connection-point-type")
+        private ConnectionPointType _connectionPointType;
         private final InterfaceKey _key;
         private final java.lang.String _macAddress;
+        @JsonProperty("name")
         private final java.lang.String _name;
+        @JsonProperty("position")
         private final java.lang.Long _position;
+        @JsonProperty("type")
         private final InterfaceType _type;
+        @JsonProperty("virtual-interface")
         private final VirtualInterface _virtualInterface;
 
         private Map<java.lang.Class<? extends Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.Interface>>, Augmentation<http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.Interface>> augmentation = Collections.emptyMap();
@@ -245,6 +259,20 @@ public class InterfaceBuilder implements Builder<http.riftio.vnfd.base.rev170228
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public InterfaceImpl(){
+          	this( new InterfaceBuilder() );
+        }
+        
+        @JsonProperty("external-connection-point-ref")
+        public void setVduidAsEndpointType(String s){
+        	_connectionPointType = (new ExternalBuilder().setExternalConnectionPointRef(s)).build() ;
+        }
+        
+        @JsonProperty("internal-connection-point-ref")
+        public void setCPAsEndpointType(String s){
+        	_connectionPointType = (new InternalBuilder().setInternalConnectionPointRef(s)).build() ;
         }
 
         @Override

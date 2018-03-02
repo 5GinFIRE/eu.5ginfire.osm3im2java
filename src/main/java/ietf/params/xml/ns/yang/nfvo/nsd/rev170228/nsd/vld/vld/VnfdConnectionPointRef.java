@@ -2,8 +2,12 @@ package ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.vld;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress;
 import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.Vld;
+import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.VldBuilder.VldImpl;
+import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.vld.VnfdConnectionPointRefBuilder.VnfdConnectionPointRefImpl;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 import org.opendaylight.yangtools.yang.binding.Identifiable;
@@ -37,6 +41,7 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see VnfdConnectionPointRefKey
  *
  */
+@JsonDeserialize(as = VnfdConnectionPointRefImpl.class)
 public interface VnfdConnectionPointRef
     extends
     ChildOf<Vld>,

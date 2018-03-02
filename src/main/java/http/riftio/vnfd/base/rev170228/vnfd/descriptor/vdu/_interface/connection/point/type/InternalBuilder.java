@@ -83,7 +83,7 @@ public class InternalBuilder implements Builder<http.riftio.vnfd.base.rev170228.
         return new InternalImpl(this);
     }
 
-    private static final class InternalImpl implements Internal {
+    public static final class InternalImpl implements Internal {
 
         @Override
         public java.lang.Class<http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu._interface.connection.point.type.Internal> getImplementedInterface() {
@@ -107,6 +107,10 @@ public class InternalBuilder implements Builder<http.riftio.vnfd.base.rev170228.
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public InternalImpl(){
+        	this( new InternalBuilder() );
         }
 
         @Override

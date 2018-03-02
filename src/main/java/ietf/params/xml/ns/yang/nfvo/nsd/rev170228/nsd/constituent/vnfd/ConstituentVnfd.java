@@ -2,7 +2,11 @@ package ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.constituent.vnfd;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.NsdConstituentVnfd;
+import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.catalog.NsdBuilder.NsdImpl;
+import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.constituent.vnfd.ConstituentVnfdBuilder.ConstituentVnfdImpl;
 
 import java.math.BigInteger;
 import org.opendaylight.yangtools.yang.binding.Augmentable;
@@ -34,6 +38,7 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see ConstituentVnfdKey
  *
  */
+@JsonDeserialize(as = ConstituentVnfdImpl.class)
 public interface ConstituentVnfd
     extends
     ChildOf<NsdConstituentVnfd>,

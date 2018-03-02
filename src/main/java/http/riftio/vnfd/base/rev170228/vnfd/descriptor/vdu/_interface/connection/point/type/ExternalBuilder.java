@@ -2,6 +2,9 @@ package http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu._interface.connectio
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VduBuilder;
+
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
 import java.util.Objects;
@@ -83,7 +86,7 @@ public class ExternalBuilder implements Builder<http.riftio.vnfd.base.rev170228.
         return new ExternalImpl(this);
     }
 
-    private static final class ExternalImpl implements External {
+    public static final class ExternalImpl implements External {
 
         @Override
         public java.lang.Class<http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu._interface.connection.point.type.External> getImplementedInterface() {
@@ -107,6 +110,10 @@ public class ExternalBuilder implements Builder<http.riftio.vnfd.base.rev170228.
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public ExternalImpl(){
+        	this( new ExternalBuilder() );
         }
 
         @Override

@@ -7,6 +7,8 @@ import org.opendaylight.yangtools.concepts.Builder;
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import http.riftio.vnfd.base.rev170228.VnfOperationalStatus;
 import http.riftio.vnfd.base.rev170228.VnfdDescriptor.ServiceFunctionChain;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.ConnectionPoint;
@@ -19,6 +21,8 @@ import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VnfConfiguration;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.ip.profile.list.IpProfiles;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.HttpEndpoint;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.MonitoringParam;
+//import urn.ietf.params.xml.ns.yang.nfvo.vnfd.rev150910.vnfd.catalog.VnfdBuilder;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.supplemental.boot.data.SupplementalBootData;
 
 import java.util.Objects;
 import java.util.List;
@@ -43,8 +47,8 @@ public class VnfdBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.vnfr.re
     private MgmtInterface _mgmtInterface;
     private List<MonitoringParam> _monitoringParam;
     private java.lang.String _name;
-    private VnfOperationalStatus _operationalStatus;
     private List<PlacementGroups> _placementGroups;
+    private VnfOperationalStatus _operationalStatus;
     private ServiceFunctionChain _serviceFunctionChain;
     private java.lang.String _serviceFunctionType;
     private java.lang.String _shortName;
@@ -53,6 +57,7 @@ public class VnfdBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.vnfr.re
     private java.lang.String _vendor;
     private java.lang.String _version;
     private VnfConfiguration _vnfConfiguration;
+    private SupplementalBootData _supplementalBootData;
 
     Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.Vnfd>>, Augmentation<ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.Vnfd>> augmentation = Collections.emptyMap();
 
@@ -207,6 +212,10 @@ public class VnfdBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.vnfr.re
     
     public List<MonitoringParam> getMonitoringParam() {
         return _monitoringParam;
+    }
+    
+    public SupplementalBootData getSupplementalBootData() {
+        return _supplementalBootData;
     }
     
     public java.lang.String getName() {
@@ -417,32 +426,48 @@ public class VnfdBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.vnfr.re
         return new VnfdImpl(this);
     }
 
-    private static final class VnfdImpl implements Vnfd {
+    public static final class VnfdImpl implements Vnfd {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.Vnfd> getImplementedInterface() {
             return ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.Vnfd.class;
         }
-
+        
+        @JsonProperty("connection-point")
         private final List<ConnectionPoint> _connectionPoint;
+        @JsonProperty("description")
         private final java.lang.String _description;
+        @JsonProperty("http-endpoint")
         private final List<HttpEndpoint> _httpEndpoint;
+        @JsonProperty("id")
         private final java.lang.String _id;
+        @JsonProperty("internal-vld")
         private final List<InternalVld> _internalVld;
         private final List<IpProfiles> _ipProfiles;
+        @JsonProperty("logo")
         private final java.lang.String _logo;
+        @JsonProperty("mgmt-interface")
         private final MgmtInterface _mgmtInterface;
+        @JsonProperty("monitoring-param")
         private final List<MonitoringParam> _monitoringParam;
+        @JsonProperty("name")
         private final java.lang.String _name;
         private final VnfOperationalStatus _operationalStatus;
+        @JsonProperty("placement-groups")
         private final List<PlacementGroups> _placementGroups;
+        @JsonProperty("service-function-chain")
         private final ServiceFunctionChain _serviceFunctionChain;
         private final java.lang.String _serviceFunctionType;
+        @JsonProperty("short-name")
         private final java.lang.String _shortName;
+        @JsonProperty("vdu")
         private final List<Vdu> _vdu;
         private final List<VduDependency> _vduDependency;
+        @JsonProperty("vendor")
         private final java.lang.String _vendor;
+        @JsonProperty("version")
         private final java.lang.String _version;
+        @JsonProperty("vnf-configuration")
         private final VnfConfiguration _vnfConfiguration;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.Vnfd>>, Augmentation<ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.Vnfd>> augmentation = Collections.emptyMap();
@@ -479,6 +504,10 @@ public class VnfdBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.vnfr.re
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public VnfdImpl(){
+          	this( new VnfdBuilder() );
         }
 
         @Override

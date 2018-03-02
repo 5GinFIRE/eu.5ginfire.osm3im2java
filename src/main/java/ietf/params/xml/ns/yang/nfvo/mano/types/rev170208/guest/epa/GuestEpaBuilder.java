@@ -7,11 +7,17 @@ import org.opendaylight.yangtools.concepts.Builder;
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VduBuilder;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.GuestEpa.CpuPinningPolicy;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.GuestEpa.CpuThreadPinningPolicy;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.GuestEpa.MempageSize;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.NumaPolicy;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.PcieDevice;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.NumaAware;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.NumaAwareBuilder;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.NumaNodePolicy;
 
 import java.util.Objects;
 import java.util.List;
@@ -153,17 +159,21 @@ public class GuestEpaBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.man
         return new GuestEpaImpl(this);
     }
 
-    private static final class GuestEpaImpl implements GuestEpa {
+    public static final class GuestEpaImpl implements GuestEpa {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.GuestEpa> getImplementedInterface() {
             return ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.GuestEpa.class;
         }
 
+        @JsonProperty("cpu-pinning-policy")
         private final CpuPinningPolicy _cpuPinningPolicy;
+        @JsonProperty("cpu-thread-pinning-policy")
         private final CpuThreadPinningPolicy _cpuThreadPinningPolicy;
+        @JsonProperty("mempage-size")
         private final MempageSize _mempageSize;
-        private final NumaPolicy _numaPolicy;
+        @JsonProperty("numa-node-policy")
+        private  NumaPolicy _numaPolicy;
         private final List<PcieDevice> _pcieDevice;
         private final java.lang.Boolean _trustedExecution;
 
@@ -187,6 +197,15 @@ public class GuestEpaBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.man
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public GuestEpaImpl(){
+        	this( new GuestEpaBuilder() );
+        }
+        
+        @JsonProperty("numa-node-policy")
+        public void setNumaNodePolicy(NumaNodePolicy s) {
+        	_numaPolicy = new NumaAwareBuilder().setNumaNodePolicy(s).build();
         }
 
         @Override

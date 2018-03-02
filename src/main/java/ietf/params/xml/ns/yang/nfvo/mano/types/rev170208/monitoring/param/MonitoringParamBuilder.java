@@ -8,12 +8,15 @@ import java.math.BigDecimal;
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.JsonQueryMethod;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.ParamValueType;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.WidgetType;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.monitoring.param.JsonQueryParams;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.value.NumericConstraints;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.value.TextConstraints;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder;
 
 import java.util.Objects;
 import java.util.Collections;
@@ -330,28 +333,37 @@ public class MonitoringParamBuilder implements Builder<ietf.params.xml.ns.yang.n
         return new MonitoringParamImpl(this);
     }
 
-    private static final class MonitoringParamImpl implements MonitoringParam {
+    public static final class MonitoringParamImpl implements MonitoringParam {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.MonitoringParam> getImplementedInterface() {
             return ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.MonitoringParam.class;
         }
 
+        @JsonProperty("description")
         private final java.lang.String _description;
+        @JsonProperty("group-tag")
         private final java.lang.String _groupTag;
+        @JsonProperty("http-endpoint-ref")
         private final java.lang.String _httpEndpointRef;
+        @JsonProperty("id")
         private final java.lang.String _id;
+        @JsonProperty("json-query-method")
         private final JsonQueryMethod _jsonQueryMethod;
         private final JsonQueryParams _jsonQueryParams;
         private final MonitoringParamKey _key;
+        @JsonProperty("name")
         private final java.lang.String _name;
         private final NumericConstraints _numericConstraints;
         private final TextConstraints _textConstraints;
+        @JsonProperty("units")
         private final java.lang.String _units;
         private final BigDecimal _valueDecimal;
         private final java.lang.Long _valueInteger;
         private final java.lang.String _valueString;
+        @JsonProperty("value-type")
         private final ParamValueType _valueType;
+        @JsonProperty("widget-type")
         private final WidgetType _widgetType;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.MonitoringParam>>, Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.MonitoringParam>> augmentation = Collections.emptyMap();
@@ -391,6 +403,10 @@ public class MonitoringParamBuilder implements Builder<ietf.params.xml.ns.yang.n
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public MonitoringParamImpl(){
+          	this( new MonitoringParamBuilder() );
         }
 
         @Override

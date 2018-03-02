@@ -1,6 +1,12 @@
 package http.riftio.vnfd.base.rev170228.virtual._interface;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import http.riftio.vnfd.base.rev170228.virtual._interface.VirtualInterfaceBuilder.VirtualInterfaceImpl;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VduBuilder.VduImpl;
+
 import java.math.BigInteger;
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 
@@ -28,6 +34,7 @@ import org.opendaylight.yangtools.yang.binding.Augmentable;
  * @see VirtualInterfaceBuilder
  *
  */
+@JsonDeserialize(as = VirtualInterfaceImpl.class)
 public interface VirtualInterface
     extends
     ChildOf<http.riftio.vnfd.base.rev170228.VirtualInterface>,

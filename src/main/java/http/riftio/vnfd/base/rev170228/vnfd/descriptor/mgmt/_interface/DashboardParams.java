@@ -2,8 +2,12 @@ package http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.MgmtInterface;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.DashboardParamsBuilder.DashboardParamsImpl;
 import ietf.params.xml.ns.yang.ietf.inet.types.rev130715.PortNumber;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder.VnfdImpl;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 
@@ -31,6 +35,7 @@ import org.opendaylight.yangtools.yang.binding.Augmentable;
  * @see DashboardParamsBuilder
  *
  */
+@JsonDeserialize(as = DashboardParamsImpl.class)
 public interface DashboardParams
     extends
     ChildOf<MgmtInterface>,

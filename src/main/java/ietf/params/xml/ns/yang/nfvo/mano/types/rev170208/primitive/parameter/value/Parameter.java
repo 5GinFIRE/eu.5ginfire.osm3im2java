@@ -2,7 +2,11 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.primitive.parameter.va
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.PrimitiveParameterValue;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.primitive.parameter.value.ParameterBuilder.ParameterImpl;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.initial.config.primitive.primitive.type.PrimitiveDefinitionBuilder.PrimitiveDefinitionImpl;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 import org.opendaylight.yangtools.yang.binding.Identifiable;
@@ -30,6 +34,7 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see ParameterKey
  *
  */
+@JsonDeserialize(as = ParameterImpl.class)
 public interface Parameter
     extends
     ChildOf<PrimitiveParameterValue>,

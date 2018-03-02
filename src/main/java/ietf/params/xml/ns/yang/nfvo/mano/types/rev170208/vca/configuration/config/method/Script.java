@@ -2,7 +2,12 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.conf
 import org.opendaylight.yangtools.yang.binding.DataObject;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VnfConfigurationBuilder.VnfConfigurationImpl;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.ConfigMethod;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.ScriptBuilder.ScriptImpl;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 
@@ -24,6 +29,7 @@ import org.opendaylight.yangtools.yang.binding.Augmentable;
  * <i>mano-types/vca-configuration/config-method/script</i>
  *
  */
+@JsonDeserialize(as = ScriptImpl.class)
 public interface Script
     extends
     DataObject,

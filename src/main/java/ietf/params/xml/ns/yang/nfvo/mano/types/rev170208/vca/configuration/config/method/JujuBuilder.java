@@ -2,6 +2,11 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.conf
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder;
+
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
 import java.util.Objects;
@@ -83,14 +88,14 @@ public class JujuBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.mano.ty
         return new JujuImpl(this);
     }
 
-    private static final class JujuImpl implements Juju {
+    public static final class JujuImpl implements Juju {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.Juju> getImplementedInterface() {
             return ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.Juju.class;
         }
 
-        private final ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.juju.Juju _juju;
+        private ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.juju.Juju _juju;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.Juju>>, Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.Juju>> augmentation = Collections.emptyMap();
 
@@ -113,6 +118,15 @@ public class JujuBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.mano.ty
         public ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.juju.Juju getJuju() {
             return _juju;
         }
+        
+        public JujuImpl(){
+          	this( new JujuBuilder() );
+        }
+        
+        @JsonProperty("charm")
+        public void setCharm(String s){
+            _juju = new ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.juju.JujuBuilder().setCharm(s).build();
+          }
         
         @SuppressWarnings("unchecked")
         @Override

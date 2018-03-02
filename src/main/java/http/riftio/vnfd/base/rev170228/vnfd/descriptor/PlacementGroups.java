@@ -2,9 +2,13 @@ package http.riftio.vnfd.base.rev170228.vnfd.descriptor;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import http.riftio.vnfd.base.rev170228.VnfdDescriptor;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.PlacementGroupsBuilder.PlacementGroupsImpl;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.placement.groups.MemberVdus;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.PlacementGroupInfo;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder.VnfdImpl;
 
 import java.util.List;
 
@@ -44,6 +48,7 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see PlacementGroupsKey
  *
  */
+@JsonDeserialize(as = PlacementGroupsImpl.class)
 public interface PlacementGroups
     extends
     ChildOf<VnfdDescriptor>,

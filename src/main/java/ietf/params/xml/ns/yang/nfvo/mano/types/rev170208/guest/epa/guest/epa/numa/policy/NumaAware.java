@@ -2,7 +2,11 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.nu
 import org.opendaylight.yangtools.yang.binding.DataObject;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.GuestEpaBuilder.GuestEpaImpl;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.NumaPolicy;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.NumaAwareBuilder.NumaAwareImpl;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.NumaNodePolicy;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
@@ -69,6 +73,7 @@ import org.opendaylight.yangtools.yang.binding.Augmentable;
  * <i>mano-types/guest-epa/guest-epa/numa-policy/numa-aware</i>
  *
  */
+@JsonDeserialize(as = NumaAwareImpl.class)
 public interface NumaAware
     extends
     DataObject,

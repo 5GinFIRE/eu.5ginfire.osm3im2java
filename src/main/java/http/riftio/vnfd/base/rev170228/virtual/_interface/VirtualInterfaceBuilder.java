@@ -3,7 +3,10 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import http.riftio.vnfd.base.rev170228.virtual._interface.VirtualInterface.Type;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder;
 
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
@@ -130,15 +133,17 @@ public class VirtualInterfaceBuilder implements Builder<http.riftio.vnfd.base.re
         return new VirtualInterfaceImpl(this);
     }
 
-    private static final class VirtualInterfaceImpl implements VirtualInterface {
+    public static final class VirtualInterfaceImpl implements VirtualInterface {
 
         @Override
         public java.lang.Class<http.riftio.vnfd.base.rev170228.virtual._interface.VirtualInterface> getImplementedInterface() {
             return http.riftio.vnfd.base.rev170228.virtual._interface.VirtualInterface.class;
         }
 
+        @JsonProperty("bandwidth")
         private final BigInteger _bandwidth;
-        private final Type _type;
+        private Type _type;
+        @JsonProperty("vpci")
         private final java.lang.String _vpci;
 
         private Map<java.lang.Class<? extends Augmentation<http.riftio.vnfd.base.rev170228.virtual._interface.VirtualInterface>>, Augmentation<http.riftio.vnfd.base.rev170228.virtual._interface.VirtualInterface>> augmentation = Collections.emptyMap();
@@ -158,6 +163,27 @@ public class VirtualInterfaceBuilder implements Builder<http.riftio.vnfd.base.re
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        @JsonProperty("type")
+        public void setType(String s) {
+        	if(s.equals("VIRTIO")) {
+        	  _type = Type.VIRTIO;
+        	}else if(s.equals("OM-MGMT")) {
+        		_type = Type.OMMGMT;
+        	}else if(s.equals("SR-IOV")) {
+        		_type = Type.SRIOV;
+        	}else if(s.equals("E1000")) {
+        		_type = Type.E1000;
+        	}else if(s.equals("RTL8139")) {
+        		_type = Type.RTL8139;
+        	}else if(s.equals("PCNET")) {
+        		_type = Type.PCNET;
+        	}
+        }
+        
+        public VirtualInterfaceImpl(){
+          	this( new VirtualInterfaceBuilder() );
         }
 
         @Override

@@ -3,7 +3,10 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.ConnectionPointType;
+//import urn.ietf.params.xml.ns.yang.nfvo.vnfd.rev150910.vnfd.descriptor.ConnectionPointBuilder;
 
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
@@ -186,17 +189,21 @@ public class ConnectionPointBuilder implements Builder<http.riftio.vnfd.base.rev
         return new ConnectionPointImpl(this);
     }
 
-    private static final class ConnectionPointImpl implements ConnectionPoint {
+    public static final class ConnectionPointImpl implements ConnectionPoint {
 
         @Override
         public java.lang.Class<http.riftio.vnfd.base.rev170228.vnfd.descriptor.ConnectionPoint> getImplementedInterface() {
             return http.riftio.vnfd.base.rev170228.vnfd.descriptor.ConnectionPoint.class;
         }
 
+        @JsonProperty("id")
         private final java.lang.String _id;
         private final ConnectionPointKey _key;
+        @JsonProperty("name")
         private final java.lang.String _name;
+        @JsonProperty("short-name")
         private final java.lang.String _shortName;
+        @JsonProperty("type")
         private final ConnectionPointType _type;
         private final java.lang.Boolean _portSecurityEnabled;
 
@@ -227,6 +234,10 @@ public class ConnectionPointBuilder implements Builder<http.riftio.vnfd.base.rev
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public ConnectionPointImpl(){
+        	this( new ConnectionPointBuilder() );
         }
 
         @Override

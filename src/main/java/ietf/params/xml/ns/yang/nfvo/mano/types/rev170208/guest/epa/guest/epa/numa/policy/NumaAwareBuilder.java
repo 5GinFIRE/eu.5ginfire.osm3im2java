@@ -3,6 +3,9 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.GuestEpaBuilder;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.numa.aware.NumaNodePolicy;
 
 import java.util.HashMap;
@@ -86,7 +89,7 @@ public class NumaAwareBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.ma
         return new NumaAwareImpl(this);
     }
 
-    private static final class NumaAwareImpl implements NumaAware {
+    public static final class NumaAwareImpl implements NumaAware {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.guest.epa.guest.epa.numa.policy.NumaAware> getImplementedInterface() {
@@ -111,7 +114,26 @@ public class NumaAwareBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.ma
                 this.augmentation = new HashMap<>(base.augmentation);
             }
         }
+        
+        public NumaAwareImpl(){
+        	this( new NumaAwareBuilder() );
+        }
+        
+        @JsonProperty("node-cnt")
+        public void setNodeCnt(String s) {
+        	 // _numaNodePolicy
+        }
 
+        @JsonProperty("mem-policy")
+        public void setMemPolicyCnt(String s) {
+        	
+        }
+        
+        @JsonProperty("node")
+        public void setNode(String s) {
+        	
+        }
+        
         @Override
         public NumaNodePolicy getNumaNodePolicy() {
             return _numaNodePolicy;

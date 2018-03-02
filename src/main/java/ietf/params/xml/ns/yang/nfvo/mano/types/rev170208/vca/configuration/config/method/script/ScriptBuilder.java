@@ -3,6 +3,9 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VnfConfigurationBuilder;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.script.Script.ScriptType;
 
 import java.util.HashMap;
@@ -86,13 +89,13 @@ public class ScriptBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.mano.
         return new ScriptImpl(this);
     }
 
-    private static final class ScriptImpl implements Script {
+    public static final class ScriptImpl implements Script {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.script.Script> getImplementedInterface() {
             return ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.script.Script.class;
         }
-
+       
         private final ScriptType _scriptType;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.script.Script>>, Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.script.Script>> augmentation = Collections.emptyMap();
@@ -110,6 +113,10 @@ public class ScriptBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.mano.
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public ScriptImpl(){
+          	this( new ScriptBuilder() );
         }
 
         @Override

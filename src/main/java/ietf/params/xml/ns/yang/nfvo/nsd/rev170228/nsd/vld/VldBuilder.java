@@ -6,10 +6,14 @@ import org.opendaylight.yangtools.concepts.Builder;
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import http.riftio.nsd.base.rev170228.nsd.vld.common.InitParams;
+import http.riftio.nsd.base.rev170228.nsd.vld.common.init.params.VimNetworkRefBuilder;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.VirtualLinkType;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.provider.network.ProviderNetwork;
 import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.vld.VnfdConnectionPointRef;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder;
 
 import java.util.Objects;
 import java.math.BigInteger;
@@ -347,26 +351,35 @@ public class VldBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.nsd.rev1
         return new VldImpl(this);
     }
 
-    private static final class VldImpl implements Vld {
+    public static final class VldImpl implements Vld {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.Vld> getImplementedInterface() {
             return ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.Vld.class;
         }
 
+        @JsonProperty("description")
         private final java.lang.String _description;
+        @JsonProperty("id")
         private final java.lang.String _id;
-        private final InitParams _initParams;
+        private InitParams _initParams;
         private final VldKey _key;
         private final BigInteger _leafBandwidth;
+        @JsonProperty("name")
         private final java.lang.String _name;
         private final ProviderNetwork _providerNetwork;
         private final BigInteger _rootBandwidth;
+        @JsonProperty("short-name")
         private final java.lang.String _shortName;
+        @JsonProperty("type")
         private final VirtualLinkType _type;
+        @JsonProperty("vendor")
         private final java.lang.String _vendor;
+        @JsonProperty("version")
         private final java.lang.String _version;
+        @JsonProperty("vnfd-connection-point-ref")
         private final List<VnfdConnectionPointRef> _vnfdConnectionPointRef;
+        @JsonProperty("mgmt-network")
         private final java.lang.Boolean _mgmtNetwork;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.Vld>>, Augmentation<ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.Vld>> augmentation = Collections.emptyMap();
@@ -405,7 +418,16 @@ public class VldBuilder implements Builder<ietf.params.xml.ns.yang.nfvo.nsd.rev1
                 this.augmentation = new HashMap<>(base.augmentation);
             }
         }
-
+        
+        public VldImpl(){
+          	this( new VldBuilder() );
+        }
+        
+        @JsonProperty("vim-network-name")
+        public void setVimNetworkName(String s) {
+        	   _initParams = new VimNetworkRefBuilder().setVimNetworkName(s).build();
+        }
+        
         @Override
         public java.lang.String getDescription() {
             return _description;

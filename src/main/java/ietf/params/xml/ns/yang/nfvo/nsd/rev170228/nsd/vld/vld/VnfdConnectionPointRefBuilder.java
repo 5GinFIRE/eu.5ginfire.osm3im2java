@@ -3,7 +3,10 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress;
+import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.VldBuilder;
 
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
@@ -143,7 +146,7 @@ public class VnfdConnectionPointRefBuilder implements Builder<ietf.params.xml.ns
         return new VnfdConnectionPointRefImpl(this);
     }
 
-    private static final class VnfdConnectionPointRefImpl implements VnfdConnectionPointRef {
+    public static final class VnfdConnectionPointRefImpl implements VnfdConnectionPointRef {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.vld.VnfdConnectionPointRef> getImplementedInterface() {
@@ -152,8 +155,11 @@ public class VnfdConnectionPointRefBuilder implements Builder<ietf.params.xml.ns
 
         private final IpAddress _ipAddress;
         private final VnfdConnectionPointRefKey _key;
+        @JsonProperty("member-vnf-index-ref")
         private final java.lang.String _memberVnfIndexRef;
+        @JsonProperty("vnfd-connection-point-ref")
         private final java.lang.Object _vnfdConnectionPointRef;
+        @JsonProperty("vnfd-id-ref")
         private final java.lang.Object _vnfdIdRef;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.vld.VnfdConnectionPointRef>>, Augmentation<ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.vld.VnfdConnectionPointRef>> augmentation = Collections.emptyMap();
@@ -184,6 +190,10 @@ public class VnfdConnectionPointRefBuilder implements Builder<ietf.params.xml.ns
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public VnfdConnectionPointRefImpl(){
+          	this( new VnfdConnectionPointRefBuilder() );
         }
 
         @Override

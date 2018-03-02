@@ -3,9 +3,19 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VnfConfigurationBuilder;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.endpoint.type.VduIdBuilder;
+import ietf.params.xml.ns.yang.ietf.inet.types.rev130715.PortNumber;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.primitive.parameter.value.Parameter;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.initial.config.primitive.PrimitiveType;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.initial.config.primitive.primitive.type.PrimitiveDefinitionBuilder;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.initial.config.primitive.primitive.type.PrimitiveDefinitionBuilder.PrimitiveDefinitionImpl;
 
 import java.util.HashMap;
+import java.util.List;
+
 import org.opendaylight.yangtools.concepts.Builder;
 import java.util.Objects;
 import java.math.BigInteger;
@@ -137,7 +147,7 @@ public class InitialConfigPrimitiveBuilder implements Builder<ietf.params.xml.ns
         return new InitialConfigPrimitiveImpl(this);
     }
 
-    private static final class InitialConfigPrimitiveImpl implements InitialConfigPrimitive {
+    public static final class InitialConfigPrimitiveImpl implements InitialConfigPrimitive {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.InitialConfigPrimitive> getImplementedInterface() {
@@ -145,7 +155,8 @@ public class InitialConfigPrimitiveBuilder implements Builder<ietf.params.xml.ns
         }
 
         private final InitialConfigPrimitiveKey _key;
-        private final PrimitiveType _primitiveType;
+        private  PrimitiveType _primitiveType;
+        @JsonProperty("seq")
         private final BigInteger _seq;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.InitialConfigPrimitive>>, Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.InitialConfigPrimitive>> augmentation = Collections.emptyMap();
@@ -172,6 +183,26 @@ public class InitialConfigPrimitiveBuilder implements Builder<ietf.params.xml.ns
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public InitialConfigPrimitiveImpl(){
+          	this( new InitialConfigPrimitiveBuilder() );
+          	_primitiveType = new PrimitiveDefinitionBuilder().build();
+        }
+        
+        @JsonProperty("name")
+        public void setName(String s){
+        ((PrimitiveDefinitionImpl)_primitiveType).setName(s);
+        }
+        
+        @JsonProperty("parameter")
+        public void setParameter(List<Parameter> s){
+          	((PrimitiveDefinitionImpl)_primitiveType).setParameter(s);
+        }
+        
+        @JsonProperty("user-defined-script")
+        public void setUserDefinedScript(String s){
+          	((PrimitiveDefinitionImpl)_primitiveType).setUserDefinedScript(s);
         }
 
         @Override

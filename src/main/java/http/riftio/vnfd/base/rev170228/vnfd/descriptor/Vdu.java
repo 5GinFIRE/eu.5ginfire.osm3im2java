@@ -2,7 +2,11 @@ package http.riftio.vnfd.base.rev170228.vnfd.descriptor;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import http.riftio.vnfd.base.rev170228.VnfdDescriptor;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VduBuilder.VduImpl;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.Alarm;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.AlternativeImages;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.CloudInitInput;
@@ -17,6 +21,7 @@ import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.ImageProperties;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.SupplementalBootData;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.VmFlavor;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.VswitchEpa;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder.VnfdImpl;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 import org.opendaylight.yangtools.yang.binding.Identifiable;
@@ -505,6 +510,8 @@ import java.util.List;
  * @see VduKey
  *
  */
+@JsonDeserialize(as = VduImpl.class)
+@JsonIgnoreProperties({"cloud-init-file"})
 public interface Vdu
     extends
     ChildOf<VnfdDescriptor>,

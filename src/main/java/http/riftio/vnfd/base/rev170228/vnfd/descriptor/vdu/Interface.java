@@ -2,10 +2,15 @@ package http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import http.riftio.vnfd.base.rev170228.InterfaceType;
 import http.riftio.vnfd.base.rev170228.VirtualInterface;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.Vdu;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu.InterfaceBuilder.InterfaceImpl;
 import http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu._interface.ConnectionPointType;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder.VnfdImpl;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 import org.opendaylight.yangtools.yang.binding.Identifiable;
@@ -63,6 +68,8 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see InterfaceKey
  *
  */
+@JsonDeserialize(as = InterfaceImpl.class)
+@JsonIgnoreProperties({"rw-project-vnfd:floating-ip-needed"})
 public interface Interface
     extends
     ChildOf<Vdu>,

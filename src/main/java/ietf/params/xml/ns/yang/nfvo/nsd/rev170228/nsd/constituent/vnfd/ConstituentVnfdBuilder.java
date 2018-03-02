@@ -2,6 +2,11 @@ package ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.constituent.vnfd;
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder;
+
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
 import java.util.Objects;
@@ -157,7 +162,7 @@ public class ConstituentVnfdBuilder implements Builder<ietf.params.xml.ns.yang.n
         return new ConstituentVnfdImpl(this);
     }
 
-    private static final class ConstituentVnfdImpl implements ConstituentVnfd {
+    public static final class ConstituentVnfdImpl implements ConstituentVnfd {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.constituent.vnfd.ConstituentVnfd> getImplementedInterface() {
@@ -165,8 +170,11 @@ public class ConstituentVnfdBuilder implements Builder<ietf.params.xml.ns.yang.n
         }
 
         private final ConstituentVnfdKey _key;
+        @JsonProperty("member-vnf-index")
         private final BigInteger _memberVnfIndex;
+        @JsonProperty("vnfd-id-ref")
         private final java.lang.String _vnfdIdRef;
+        @JsonProperty("start-by-default")
         private final java.lang.Boolean _startByDefault;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.constituent.vnfd.ConstituentVnfd>>, Augmentation<ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.constituent.vnfd.ConstituentVnfd>> augmentation = Collections.emptyMap();
@@ -194,6 +202,10 @@ public class ConstituentVnfdBuilder implements Builder<ietf.params.xml.ns.yang.n
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public ConstituentVnfdImpl(){
+          	this( new ConstituentVnfdBuilder() );
         }
 
         @Override

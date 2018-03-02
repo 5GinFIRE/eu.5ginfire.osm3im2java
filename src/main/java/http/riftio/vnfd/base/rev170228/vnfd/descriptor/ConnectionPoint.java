@@ -2,8 +2,12 @@ package http.riftio.vnfd.base.rev170228.vnfd.descriptor;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import http.riftio.vnfd.base.rev170228.CommonConnectionPoint;
 import http.riftio.vnfd.base.rev170228.VnfdDescriptor;
+//import urn.ietf.params.xml.ns.yang.nfvo.vnfd.rev150910.vnfd.descriptor.ConnectionPointBuilder.ConnectionPointImpl;
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.ConnectionPointBuilder.ConnectionPointImpl;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 import org.opendaylight.yangtools.yang.binding.Identifiable;
@@ -46,6 +50,7 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see ConnectionPointKey
  *
  */
+@JsonDeserialize(as = ConnectionPointImpl.class)
 public interface ConnectionPoint
     extends
     ChildOf<VnfdDescriptor>,

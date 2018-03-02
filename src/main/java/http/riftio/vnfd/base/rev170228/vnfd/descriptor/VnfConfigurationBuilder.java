@@ -3,9 +3,21 @@ import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.endpoint.type.VduIdBuilder;
+import ietf.params.xml.ns.yang.ietf.inet.types.rev130715.PortNumber;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.ConfigMethod;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.ConfigPrimitive;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.InitialConfigPrimitive;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.InitialConfigPrimitiveBuilder;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.Juju;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.JujuBuilder;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.Script;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.ScriptBuilder;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.ScriptBuilder.ScriptImpl;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.vca.configuration.config.method.script.Script.ScriptType;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder;
 
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
@@ -142,14 +154,15 @@ public class VnfConfigurationBuilder implements Builder<http.riftio.vnfd.base.re
         return new VnfConfigurationImpl(this);
     }
 
-    private static final class VnfConfigurationImpl implements VnfConfiguration {
+    public static final class VnfConfigurationImpl implements VnfConfiguration {
 
         @Override
         public java.lang.Class<http.riftio.vnfd.base.rev170228.vnfd.descriptor.VnfConfiguration> getImplementedInterface() {
             return http.riftio.vnfd.base.rev170228.vnfd.descriptor.VnfConfiguration.class;
         }
 
-        private final ConfigMethod _configMethod;
+        private  ConfigMethod _configMethod;
+        @JsonProperty("config-primitive")
         private final List<ConfigPrimitive> _configPrimitive;
         private final List<InitialConfigPrimitive> _initialConfigPrimitive;
 
@@ -171,6 +184,27 @@ public class VnfConfigurationBuilder implements Builder<http.riftio.vnfd.base.re
                 this.augmentation = new HashMap<>(base.augmentation);
             }
         }
+        
+        public VnfConfigurationImpl(){
+          	this( new VnfConfigurationBuilder() );
+        }
+        
+        @JsonProperty("initial-config-primitive")
+        public void setInitialConfigPrimitive(List<InitialConfigPrimitive> s) {
+        		for(InitialConfigPrimitive inp : s ) {
+        			inp = new InitialConfigPrimitiveBuilder().setPrimitiveType(inp.getPrimitiveType()).build();
+        		}
+        }
+        
+        @JsonProperty("juju")
+        public void setJuju(Juju s){
+          _configMethod = s;
+         }
+        
+        @JsonProperty("script")
+        public void setScript(Script s){
+        	  _configMethod = s;
+         }
 
         @Override
         public ConfigMethod getConfigMethod() {

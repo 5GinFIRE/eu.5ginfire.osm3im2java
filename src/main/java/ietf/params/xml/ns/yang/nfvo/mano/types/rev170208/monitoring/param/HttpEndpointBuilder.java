@@ -6,9 +6,13 @@ import org.opendaylight.yangtools.concepts.Builder;
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.mgmt._interface.endpoint.type.VduIdBuilder;
 import ietf.params.xml.ns.yang.ietf.inet.types.rev130715.PortNumber;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.HttpMethod;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.http.endpoint.Headers;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder;
 
 import java.util.Objects;
 import java.util.List;
@@ -203,7 +207,7 @@ public class HttpEndpointBuilder implements Builder<ietf.params.xml.ns.yang.nfvo
         return new HttpEndpointImpl(this);
     }
 
-    private static final class HttpEndpointImpl implements HttpEndpoint {
+    public static final class HttpEndpointImpl implements HttpEndpoint {
 
         @Override
         public java.lang.Class<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.HttpEndpoint> getImplementedInterface() {
@@ -212,12 +216,16 @@ public class HttpEndpointBuilder implements Builder<ietf.params.xml.ns.yang.nfvo
 
         private final List<Headers> _headers;
         private final HttpEndpointKey _key;
+        @JsonProperty("method")
         private final HttpMethod _method;
         private final java.lang.String _password;
+        @JsonProperty("path")
         private final java.lang.String _path;
+        @JsonProperty("polling-interval-secs")
         private final java.lang.Short _pollingIntervalSecs;
-        private final PortNumber _port;
+        private PortNumber _port;
         private final java.lang.String _username;
+        @JsonProperty("https")
         private final java.lang.Boolean _https;
 
         private Map<java.lang.Class<? extends Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.HttpEndpoint>>, Augmentation<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.HttpEndpoint>> augmentation = Collections.emptyMap();
@@ -250,6 +258,15 @@ public class HttpEndpointBuilder implements Builder<ietf.params.xml.ns.yang.nfvo
             default :
                 this.augmentation = new HashMap<>(base.augmentation);
             }
+        }
+        
+        public HttpEndpointImpl(){
+          	this( new HttpEndpointBuilder() );
+        }
+        
+        @JsonProperty("port")
+        public void setPort(String s){
+           _port = new PortNumber(Integer.parseInt(s));
         }
 
         @Override

@@ -2,6 +2,9 @@ package http.riftio.nsd.base.rev170228.nsd.vld.common.init.params;
 import org.opendaylight.yangtools.yang.binding.Augmentation;
 import org.opendaylight.yangtools.yang.binding.AugmentationHolder;
 import org.opendaylight.yangtools.yang.binding.DataObject;
+
+import ietf.params.xml.ns.yang.nfvo.nsd.rev170228.nsd.vld.VldBuilder;
+
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
 import java.util.Objects;
@@ -83,14 +86,15 @@ public class VimNetworkRefBuilder implements Builder<http.riftio.nsd.base.rev170
         return new VimNetworkRefImpl(this);
     }
 
-    private static final class VimNetworkRefImpl implements VimNetworkRef {
+    public static final class VimNetworkRefImpl implements VimNetworkRef {
 
         @Override
         public java.lang.Class<http.riftio.nsd.base.rev170228.nsd.vld.common.init.params.VimNetworkRef> getImplementedInterface() {
             return http.riftio.nsd.base.rev170228.nsd.vld.common.init.params.VimNetworkRef.class;
         }
 
-        private final java.lang.String _vimNetworkName;
+        
+        private java.lang.String _vimNetworkName;
 
         private Map<java.lang.Class<? extends Augmentation<http.riftio.nsd.base.rev170228.nsd.vld.common.init.params.VimNetworkRef>>, Augmentation<http.riftio.nsd.base.rev170228.nsd.vld.common.init.params.VimNetworkRef>> augmentation = Collections.emptyMap();
 
@@ -108,10 +112,18 @@ public class VimNetworkRefBuilder implements Builder<http.riftio.nsd.base.rev170
                 this.augmentation = new HashMap<>(base.augmentation);
             }
         }
+        
+        public void setVimNetworkName(String s) {
+        	 _vimNetworkName = s;
+     }
 
         @Override
         public java.lang.String getVimNetworkName() {
             return _vimNetworkName;
+        }
+        
+        public VimNetworkRefImpl(){
+          	this( new VimNetworkRefBuilder() );
         }
         
         @SuppressWarnings("unchecked")

@@ -2,10 +2,14 @@ package ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param;
 import org.opendaylight.yangtools.yang.binding.ChildOf;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.JsonQueryMethod;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.MonitoringParamUiData;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.MonitoringParamValue;
+import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.MonitoringParamBuilder.MonitoringParamImpl;
 import ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.monitoring.param.monitoring.param.JsonQueryParams;
+import ietf.params.xml.ns.yang.nfvo.vnfr.rev170228.project.vnfr.catalog.vnfr.VnfdBuilder.VnfdImpl;
 
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 import org.opendaylight.yangtools.yang.binding.Identifiable;
@@ -89,6 +93,7 @@ import org.opendaylight.yangtools.yang.binding.Identifiable;
  * @see MonitoringParamKey
  *
  */
+@JsonDeserialize(as = MonitoringParamImpl.class)
 public interface MonitoringParam
     extends
     ChildOf<ietf.params.xml.ns.yang.nfvo.mano.types.rev170208.MonitoringParam>,

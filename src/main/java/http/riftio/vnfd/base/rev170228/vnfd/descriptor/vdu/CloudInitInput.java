@@ -2,6 +2,10 @@ package http.riftio.vnfd.base.rev170228.vnfd.descriptor.vdu;
 import org.opendaylight.yangtools.yang.binding.DataContainer;
 import org.opendaylight.yangtools.yang.common.QName;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import http.riftio.vnfd.base.rev170228.vnfd.descriptor.VduBuilder.VduImpl;
+
 /**
  * Indicates how the contents of cloud-init script are provided.There are 2 
  * - inline or in a file
